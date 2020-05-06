@@ -9,10 +9,55 @@ class BST {
     if (node === null) {
       this.root = new Node(data)
       return
+    } else {
+      const searchTree = (node) => {
+        if (data < node.data) {
+          if (node.left === null) {
+            node.left = new Node(data)
+            return
+          } else if (node.left !== null) return searchTree(node.left)
+        } else if (data > node.data) {
+          if (node.right === null) {
+            node.right = new Node(data)
+            return
+          } else if (node.right != null) return searchTree(node.right)
+        } else return null //if data === node.data dont add to tree
+      }
+      return searchTree(node)
     }
   }
   isEmpty() {
     return this.root === null ? true : false
+  }
+  findMin() {
+    let current = this.root
+    while (current.left !== null) {
+      current = current.left
+    }
+    return current.data
+  }
+  findMax() {
+    let current = this.root
+    while (current.right !== null) {
+      current = current.right
+    }
+    return current.data
+  }
+  find(data) {
+    let current = this.root
+    while (current.data !== data) {
+      current = data < current.data ? current.left : current.right
+      if (current === null) return null
+    }
+    return current
+  }
+  contains(data) {
+    let current = this.root
+    while (current) {
+      if (data === current.data) return true
+      current = data < current.data ? current.left : current.right
+    }
+    return false
   }
 }
 module.exports = BST

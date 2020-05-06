@@ -1,6 +1,15 @@
 const BTS = require('./bst')
 
 const tree = new BTS()
-console.log(tree.isEmpty())
+// console.log(tree.isEmpty())
 tree.add(10)
-console.log(tree.isEmpty())
+tree.add(20)
+tree.add(2)
+tree.add(6)
+tree.add(100)
+// console.log(tree.isEmpty())
+
+// console.log(tree.findMin())
+// console.log(tree.findMax())
+// console.log(tree.find(2))
+console.log(tree.contains(200))
